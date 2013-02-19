@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>/ascii/</title>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+	</head>
+
+	<body>
+		<h1>/ascii/</h1>
+
+		<form method="post">
+			<lable>
+				<div>title</div>
+				<input type="text" name="title" value="{{title}}">
+			</label>
+
+			<label>
+				<div>art</div>
+				<textarea name="art" >{{art}}</textarea>
+			</label>
+
+			<div class="error">{{error}}</div><!-- render this page with error courtesy of jinja-->
+
+			<input type="submit">
+		</form>
+
+		<!-- here is where we display all the artwork we've got submitted -->
+		<hr> <!-- horizontal rule -->
+		
+		<!-- now, python code embedded in the html. How cool is that!?!  Note that the curly and percent designates an opening python section-->
+		{% for art in arts %}
+			<div class="art">
+				<div class="art-title">{{art.title}}</div>
+				<pre class="art-body"> {{art.art}}</pre><!-- pre tag preserves whitespace (preformatted) so ascii displays right!-->
+			</div>
+		{% endfor %}
+
+	</body>
+</html>
